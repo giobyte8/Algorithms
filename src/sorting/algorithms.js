@@ -4,28 +4,22 @@ export const selectionSort = (numbers) => {
         return numbers;
     }
 
-    let sorted = [];
-    let numbersLength = numbers.length;
-
-    for (let i = 0; i < numbersLength; i++) {
-
-        // Get the lowest number of remaining
-        let minNumber = numbers[0];
-        let minIdx = 0;
-        if (numbers.length >= 2) {
-            for (let j = 1; j < numbers.length; j++) {
-                const number = numbers[j];
-
-                if (number < minNumber) {
-                    minNumber = number;
-                    minIdx = j;
-                }
+    for (let i = 0; i < numbers.length; i++) {        
+        let smallest = numbers[i];
+        let smallestIdx = i;
+        for (let j = i + 1; j < numbers.length; j++) {
+            if (numbers[j] < smallest) {
+                smallest = numbers[j];
+                smallestIdx = j;
             }
         }
 
-        sorted.push(minNumber);
-        numbers.splice(minIdx, 1);
+        if (smallestIdx !== i) {
+            const aux = numbers[i];
+            numbers[i] = smallest;
+            numbers[smallestIdx] = aux;
+        }
     }
 
-    return sorted;
+    return numbers;
 }
