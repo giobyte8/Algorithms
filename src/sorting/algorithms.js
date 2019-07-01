@@ -111,3 +111,108 @@ export const mergeSort = (numbers) => {
 
     return divideSort(numbers);
 }
+
+export const quickSort = (numbers) => {
+    if (!numbers.length || numbers.length === 1) {
+        return numbers;
+    }
+
+    /**
+     * Takes a pivot between start and end indexes and move all
+     * smallest elements to left of pivot and greater elements
+     * to the right.
+     * After that, invokes self recursively for subarrays of both
+     * sides of pivot
+     * 
+     * @param {Number} start Start index of subarray (Inclusive)
+     * @param {Number} end End index of subarray (Exclusive)
+     * @param {Array} items Array that contains the specified indixes
+     */
+    const sort = (start, end, items) => {
+        if (end - start === 2) {
+            if (items[start] > items[start + 1]) {
+                const aux = items[start + 1]
+                items[start + 1] = items[start]
+                items[start] = aux
+            }
+        } else {
+            let pivotIdx = Math.floor((end - start) / 2)
+            let leftIdx = start;
+            let rightIdx = end - 1;
+
+            while (leftIdx < pivotIdx && rightIdx > pivotIdx) {
+                if (items[leftIdx] > items[pivotIdx]) {
+                    if (items[rightIdx] < items[pivotIdx]) {
+                        const aux = items[rightIdx];
+                        items[rightIdx] = items[leftIdx];
+                        items[leftIdx] = aux;
+
+                        rightIdx--;
+                        leftIdx++;
+                    } else {
+                        rightIdx--;
+                    }
+                } else {
+                    leftIdx++;
+                }
+            }
+
+            // Move all possible greater remainers from left side
+            // to right of pivot
+            while (leftIdx < pivotIdx) {
+                if (items[leftIdx] > items[pivotIdx]) {
+                    const value = items[leftIdx];
+                    
+                    // Move all elements after 'leftIdx' one position to
+                    // the left
+                    for (let i = leftIdx; i < end - 1; i++) {
+                        items[i] = items[i + 1];
+                    }
+
+                    // Put value at last position of array
+                    items[end - 1] = value;
+
+                    // Adjust pivotIdx and rightIdx to match new position
+                    rightIdx--;
+                    pivotIdx--;
+                }
+
+                leftIdx++;
+            }
+
+            // Move all posible smallest remainer from right side
+            // to left of pivot
+            while (rightIdx > pivotIdx) {
+                if (items[rightIdx] < items[pivotIdx]) {
+                    const value = items[rightIdx];
+
+                    // Move all elements since pivot til before 'rightIdx'
+                    // one position to right
+                    for (let i = rightIdx; i > pivotIdx; i--) {
+                        items[i] = items[i - 1];
+                    }
+
+                    // Put value where pivot was previously
+                    items[pivotIdx] = value;
+
+                    // Adjust pivotIdx and rightIdx to match new positions
+                    rightIdx++;
+                    pivotIdx++;
+                }
+
+                rightIdx--;
+            }
+
+            // Sort subarrays from each side of pivot recursively
+            if (pivotIdx - start > 1) {
+                sort(start, pivotIdx, items);
+            }
+            if (end - pivotIdx > 1) {
+                sort(pivotIdx, end, items);
+            }
+        }
+    }
+
+    sort(0, numbers.length, numbers);
+    return numbers;
+}
