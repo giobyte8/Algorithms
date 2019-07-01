@@ -50,3 +50,22 @@ export const selectionSort = (numbers) => {
 
     return numbers;
 }
+
+export const insertionSort = (numbers) => {
+    if (!numbers.length || numbers.length === 1) {
+        return numbers;
+    }    
+
+    for (let elementToSortIdx = 1; elementToSortIdx < numbers.length; elementToSortIdx++) {
+        let prevElementIdx = elementToSortIdx - 1;
+        let elementToSort = numbers[elementToSortIdx];
+
+        while (prevElementIdx >= 0 && numbers[prevElementIdx] > elementToSort) {
+            numbers[prevElementIdx + 1] = numbers[prevElementIdx];
+            numbers[prevElementIdx] = elementToSort;
+            prevElementIdx--;
+        }
+    }
+    
+    return numbers;
+}
