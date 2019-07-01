@@ -1,24 +1,18 @@
+import { validateArray, swap } from "./utils";
+import { validate } from "@babel/types";
+
 
 export const bubleSort = (numbers) => {
-    if (!numbers.length || numbers.length === 1) {
-        return numbers;
-    }
+    validateArray(numbers);
 
-    let completellySorted = false;
-    while (!completellySorted) {
-        completellySorted = true;
+    let swapped = true;
+    while (swapped) {
+        swapped = false;
 
-        for (let i = 0; i < numbers.length; i++) {
-            if (numbers.length === i + 1) {
-                break;
-            }
-
+        for (let i = 0; i < numbers.length - 1; i++) {
             if (numbers[i] > numbers[i + 1]) {
-                completellySorted = false;
-                
-                const aux = numbers[i];
-                numbers[i] = numbers[i + 1];
-                numbers[i + 1] = aux
+                swapped = true
+                swap(numbers, i, i + 1);
             }
         }
     }
@@ -27,9 +21,7 @@ export const bubleSort = (numbers) => {
 }
 
 export const selectionSort = (numbers) => {
-    if (!numbers.length || numbers.length === 1) {
-        return numbers;
-    }
+    validateArray(numbers);
 
     for (let i = 0; i < numbers.length; i++) {        
         let smallest = numbers[i];
@@ -52,9 +44,7 @@ export const selectionSort = (numbers) => {
 }
 
 export const insertionSort = (numbers) => {
-    if (!numbers.length || numbers.length === 1) {
-        return numbers;
-    }    
+    validateArray(numbers);
 
     for (let elementToSortIdx = 1; elementToSortIdx < numbers.length; elementToSortIdx++) {
         let prevElementIdx = elementToSortIdx - 1;
@@ -71,9 +61,7 @@ export const insertionSort = (numbers) => {
 }
 
 export const mergeSort = (numbers) => {
-    if (!numbers.length || numbers.length === 1) {
-        return numbers;
-    }
+    validateArray(numbers);
 
     const merge = (list1, list2) => {
         let result = [];
@@ -113,9 +101,7 @@ export const mergeSort = (numbers) => {
 }
 
 export const quickSort = (numbers) => {
-    if (!numbers.length || numbers.length === 1) {
-        return numbers;
-    }
+    validateArray(numbers);
 
     /**
      * Takes a pivot between start and end indexes and move all
@@ -131,9 +117,7 @@ export const quickSort = (numbers) => {
     const sort = (start, end, items) => {
         if (end - start === 2) {
             if (items[start] > items[start + 1]) {
-                const aux = items[start + 1]
-                items[start + 1] = items[start]
-                items[start] = aux
+                swap(items, start, start + 1);
             }
         } else {
             let pivotIdx = Math.floor((end - start) / 2) + start;
@@ -143,9 +127,7 @@ export const quickSort = (numbers) => {
             while (leftIdx < pivotIdx && rightIdx > pivotIdx) {
                 if (items[leftIdx] > items[pivotIdx]) {
                     if (items[rightIdx] < items[pivotIdx]) {
-                        const aux = items[rightIdx];
-                        items[rightIdx] = items[leftIdx];
-                        items[leftIdx] = aux;
+                        swap(items, leftIdx, rightIdx);
 
                         rightIdx--;
                         leftIdx++;
