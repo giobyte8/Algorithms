@@ -1,10 +1,10 @@
 {
-  "name": "algorithms-sorting",
+  "name": "algorithms",
   "version": "1.0.0",
   "description": "",
   "main": "algorithms.js",
   "scripts": {
-    "test": "jest --no-cache ./src/sorting/*"
+    "test": "jest --no-cache ./src/arrays/*"
   },
   "author": "Giovanni Aguirre",
   "license": "ISC",
