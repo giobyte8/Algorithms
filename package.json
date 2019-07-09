@@ -4,7 +4,7 @@
   "description": "",
   "main": "algorithms.js",
   "scripts": {
-    "test": "jest --no-cache ./src/arrays/sum_factors"
+    "test": "jest --no-cache ./src/structures/tree/*"
   },
   "author": "Giovanni Aguirre",
   "license": "ISC",
