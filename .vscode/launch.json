@@ -25,6 +25,17 @@
                 "${workspaceFolder}/src/arrays/"
             ],
             "disableOptimisticBPs": true
+        },
+        {
+            "name": "Jest tree serialization",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            "args": [
+                "--no-cache",
+                "${workspaceFolder}/src/structures/tree/SerializedTree"
+            ],
+            "disableOptimisticBPs": true
         }
     ]
 }
