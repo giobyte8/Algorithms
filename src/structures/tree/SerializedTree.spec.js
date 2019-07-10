@@ -90,7 +90,7 @@ describe("Deserialize binary tree", () => {
         n7.right = n9;
 
         let tree = new SerializedTree(n7);
-        let serialized = JSON.stringify(tree.serialize());
+        let serialized = tree.serialize();
         let inorder = [2, 4, 5, 7, 8, 9, 10];
 
         let restoredTree = SerializedTree.deserialize(serialized);
@@ -113,10 +113,26 @@ describe("Deserialize binary tree", () => {
         n7.right = n9;
 
         let tree = new SerializedTree(n7);
-        let serialized = JSON.stringify(tree.serialize());
+        let serialized = tree.serialize();
         let inorder = [7, 9, 10];
 
         let restoredTree = SerializedTree.deserialize(serialized);
         expect(restoredTree.traverseInorder()).toEqual(inorder);    
+    });
+
+    test("Daily coding problem test", () => {
+        let left = new Node("left");
+        let leftLeft = new Node("left.left")
+        let right = new Node("right");
+        let root = new Node("root");
+
+        root.right = right;
+        root.left = left;
+        root.left.left = leftLeft;
+        let tree = new SerializedTree(root);
+
+        let serialized = tree.serialize();
+        let restoredTree = SerializedTree.deserialize(serialized);
+        expect(restoredTree.root.left.left.value).toEqual("left.left");
     });
 });
