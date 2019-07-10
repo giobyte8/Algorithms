@@ -49,7 +49,7 @@ export default class SerializedTree extends BinaryTree {
      * @param {string} serialized Serialized tree
      */
     static deserialize(serialized) {
-        let jRoot = JSON.parse(JSON.parse(serialized));
+        let jRoot = JSON.parse(serialized);
         let root = SerializedTree._assemble(jRoot);
 
         return new SerializedTree(root);
