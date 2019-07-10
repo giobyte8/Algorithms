@@ -50,12 +50,12 @@ dramatically.
 ## Implementations
 
 ### Node class
-Checkout the `Node` class at [TreeUtils](./TreeUtils), this class
+Checkout the `Node` class at [TreeUtils](./TreeUtils.js), this class
 is used across all the tree implementations, and implements the 
 traversal algorithms.
 
 ### Binary tree
-Check the `BinaryTree` class at [BinaryTree](./BinaryTree) file, this
+Check the `BinaryTree` class at [BinaryTree](./BinaryTree.js) file, this
 class is the implementations of a simple binary tree.
 
 ### Unit tests
