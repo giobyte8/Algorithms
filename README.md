@@ -11,3 +11,4 @@ for software development.
 1. [Sorting algorithms](./src/sorting/)
 2. [Arrays algorithms](./src/arrays/)
 3. [Tree data structures](./src/structures/tree/)
+4. [Daily coding problem](./src/dailycodingproblem/)
