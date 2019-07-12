@@ -4,7 +4,7 @@
   "description": "",
   "main": "algorithms.js",
   "scripts": {
-    "test": "jest --no-cache ./src/structures/tree/*"
+    "test": "jest --no-cache"
   },
   "author": "Giovanni Aguirre",
   "license": "ISC",
