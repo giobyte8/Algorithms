@@ -36,6 +36,17 @@
                 "${workspaceFolder}/src/structures/tree/SerializedTree"
             ],
             "disableOptimisticBPs": true
+        },
+        {
+            "name": "Generic debugger",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            "args": [
+                "--no-cache",
+                "${workspaceFolder}/src/arrays/matrix_spiral.spec.js"
+            ],
+            "disableOptimisticBPs": true
         }
     ]
 }
