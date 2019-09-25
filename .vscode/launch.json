@@ -44,7 +44,7 @@
             "program": "${workspaceFolder}/node_modules/jest/bin/jest",
             "args": [
                 "--no-cache",
-                "${workspaceFolder}/src/arrays/matrix_spiral.spec.js"
+                "${workspaceFolder}/src/structures/tree/LeafsAndRoot"
             ],
             "disableOptimisticBPs": true
         }
