@@ -6,7 +6,7 @@ strong understanding of fundamentals and problem solving skills.
 In this project I'm collecting multiple problems and its
 corresponding javascript solutions.
 
-## Sections
+## Included problems and solutions
 *Follow each problem link to see its description*
 
 [//]: # (Split those into its own folder)
